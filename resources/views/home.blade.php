@@ -27,8 +27,29 @@
                    {{-- @foreach($users as $user)
                         <p>{{ $user->name }}{{$user->profile['address'] }}</p>
                    @endforeach --}}
-                   <p>{{ Auth::user()->name }}</p>
-                    <p>{{ Auth::user()->profile->address }}</p>
+                   {{-- <p>{{ Auth::user()->name }}</p>
+                    <p>{{ Auth::user()->profile->address }}</p> --}}
+
+                   {{-- @foreach($users as $user)
+                       
+
+                        <p>{{ $user->name }}</p>
+                            @foreach($user->posts as $post)
+                                <p>
+                                    <b>{{ $post->title }}</b>
+                                </p>
+                                <p>
+                                    <b>{{ $post->body }}</b>
+                                </p>
+                            @endforeach
+                        <hr>
+                    @endforeach --}}
+
+                    @foreach($posts as $post)
+                            <p>{{ $post->title }} [Posted By:]<b>{{ $post->users->name }}</b></p> 
+                        
+                    @endforeach
+
                 </div>
             </div>
         </div>

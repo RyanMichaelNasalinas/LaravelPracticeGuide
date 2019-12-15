@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 
 class TaskController extends Controller
 {
@@ -13,8 +14,10 @@ class TaskController extends Controller
       // // dd($user);
       // // $user = User::findOrFail($id);
       // return view('user',compact('users'));
-      $users = $user->get();
-      return view('home',compact('users'));
+      // $users = $user->has('posts')->get();
+      // return $users;
+      $posts = Post::with('users')->get();
+      return view('home',compact('posts'));
    }
 
     public function create() {
