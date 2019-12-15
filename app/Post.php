@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Tag;
+use App\Comment;
 
 class Post extends Model
 {
@@ -21,5 +22,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-
+    public function comments() {
+        return $this->morphMany(Comment::class,'commentable');
+    }
+ 
 }

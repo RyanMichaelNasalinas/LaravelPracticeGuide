@@ -11,7 +11,9 @@
 |
 */
 use App\Post; // Import post model
-
+use App\Tag; // Import tag model
+use App\Video;
+use App\Comment;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +33,11 @@ Route::prefix('jobs')->group(function(){
 
 Route::get('/user','TaskController@index');
 
+Route::get('/tasks', function(){
+    $post = Post::find(2);
+    $post->tag()->attach(3);
+});
+
 Route::get('/users', function(){
 
     $users = ['one','two','three'];
@@ -38,10 +45,17 @@ Route::get('/users', function(){
     return view('data', compact('users'));
 });
 
-Route::get('posts', function(){
-    $post = Post::paginate(1);
-    return $post;
-});
+Route::get('posts',function(){
+    $post = Video::find(2);
+    $comment = new Comment;
+    $comment->body="This is a comment for video";
+    $post->comments()->save($comment);
+}); 
+
+// Route::get('posts', function(){
+//     $post = Post::paginate(1);
+//     return $post;
+// });
 
 
 //String Helper Function Practice

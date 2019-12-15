@@ -16,7 +16,8 @@ class TaskController extends Controller
       // return view('user',compact('users'));
       // $users = $user->has('posts')->get();
       // return $users;
-      $posts = Post::with('users')->get();
+      $posts = Post::with('tag')->get();
+      // return $posts;
       return view('home',compact('posts'));
    }
 

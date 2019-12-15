@@ -45,9 +45,15 @@
                         <hr>
                     @endforeach --}}
 
-                    @foreach($posts as $post)
+                    {{-- @foreach($posts as $post)
                             <p>{{ $post->title }} [Posted By:]<b>{{ $post->users->name }}</b></p> 
-                        
+                    @endforeach --}}
+
+                    @foreach($posts as $post)
+                        <p>{{ $post->title }}</p>
+                        @foreach($post->tag as $tag)
+                            {{ $tag->name }}<br>
+                        @endforeach
                     @endforeach
 
                 </div>
